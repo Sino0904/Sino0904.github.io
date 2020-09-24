@@ -35,32 +35,6 @@
         href="${`https://sino0904.github.io/${pathname}${el.name}`}">${el.name}`)}
     </div>
       
-      <div class="content">
-      <h1>EdgeBox Results<p>Edge Box proposal results for movie clips (sampled at 1 fps)</p></h1>
-      <div class="gg-container">
-        <div class="gg-box">
-
-         ${results.filter(el => el.name.match(/\.(gif|jpe?g|tiff?|png|webp|bmp|svg)$/i)).map(el => html`
-            <a
-             class="img"
-             href="${`https://sino0904.github.io${pathname}${el.name}`}"
-             style="${`background-image: url(https://sino0904.github.io${pathname}${el.name})`}">`)}`)  
-            
-        </div>
-      </div>
-    </div>
-    <script src="js/grid-gallery.min.js"></script>
-    <script>
-    gridGallery({
-      selector: "#horizontal",
-      layout: "horizontal"
-    });
-    gridGallery({
-      selector: "#square",
-      layout: "square"
-    });
-    </script>
-    <script src="assets/js/main.js"></script>
   }
 
 </script>
