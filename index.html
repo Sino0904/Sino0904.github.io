@@ -25,7 +25,40 @@
       <h1>EdgeBox Results<p>Edge Box proposal results for movie clips (sampled at 1 fps)</p></h1>
       <div class="gg-container">
         <div class="gg-box">
-          <script src="loadimg.js"></script>
+            <script  type="module">
+
+               import {render, html} from 'https://unpkg.com/uhtml?module';
+
+               window.onload = async () => {
+
+               const pathname = window.location.pathname.replace(/\/MapIcons/, '');
+
+               const response = await fetch(`https://api.github.com/repos/geolytix/mapicons/contents${pathname}`)
+
+               const results = await response.json()
+
+               render(document.body, html`
+               <div>
+                 ${results.filter(el => el.type === 'dir').map(el => html`
+               <a
+               class="directory"
+               href="${`https://geolytix.github.io/MapIcons${pathname}${el.name}`}">${el.name}`)}
+               </div>
+               <div class="gallery">
+               ${results.filter(el => el.name.match(/\.(gif|jpe?g|tiff?|png|webp|bmp|svg)$/i)).map(el => html`
+               <a
+               class="img"
+               href="${`https://geolytix.github.io/MapIcons${pathname}${el.name}`}"
+               style="${`background-image: url(https://geolytix.github.io/MapIcons${pathname}${el.name})`}">`)}`)
+  
+
+               }
+
+            </script>
+          
+
+
+
         </div>
       </div>
     </div>
